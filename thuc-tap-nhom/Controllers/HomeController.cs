@@ -9,23 +9,44 @@ namespace thuc_tap_nhom.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult index()
         {
-            var list = new EShopDbContext().Products.ToList(); //test
-            return View(list);
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
-
-        public ActionResult Contact()
+        public ActionResult about()
         {
-            ViewBag.Message = "Your contact page.";
-
+            return View();
+        }
+        public ActionResult codes()
+        {
+            return View();
+        }
+        public ActionResult faq()
+        {
+            return View();
+        }
+        public ActionResult icons()
+        {
+            return View();
+        }
+        public ActionResult mail()
+        {
+            return View();
+        }
+        public ActionResult single()
+        {
+            return View();
+        }
+        public ActionResult products()
+        {
+            return View();
+        }
+        public ActionResult products1()
+        {
+            return View();
+        }
+        public ActionResult products2()
+        {
             return View();
         }
     }
