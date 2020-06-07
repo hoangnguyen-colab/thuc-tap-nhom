@@ -1,6 +1,6 @@
-﻿using Models.DAO;
-using Models.EF;
-using cong_nghe_web.Models;
+﻿using DataAccess.DAO;
+using DataAccess.EF;
+using thuc_tap_nhom.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using System.Data.SqlClient;
 
-namespace cong_nghe_web.Controllers
+namespace thuc_tap_nhom.Controllers
 {
     public class CustomerController : Controller
     {
