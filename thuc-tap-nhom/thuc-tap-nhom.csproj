@@ -318,23 +318,15 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\about.cshtml" />
-    <Content Include="Views\Home\codes.cshtml" />
-    <Content Include="Views\Home\faq.cshtml" />
-    <Content Include="Views\Home\icons.cshtml" />
-    <Content Include="Views\Home\mail.cshtml" />
-    <Content Include="Views\Home\single.cshtml" />
-    <Content Include="Views\Home\products.cshtml" />
-    <Content Include="Views\Home\products1.cshtml" />
-    <Content Include="Views\Home\products2.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Shop\Shop.cshtml" />
     <Content Include="Views\Shop\ShopPartial.cshtml" />
     <Content Include="Views\Cart\Cart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Home\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
