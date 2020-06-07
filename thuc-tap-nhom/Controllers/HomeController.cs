@@ -9,45 +9,6 @@ namespace thuc_tap_nhom.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            return View();
-        }
-        public ActionResult about()
-        {
-            return View();
-        }
-        public ActionResult codes()
-        {
-            return View();
-        }
-        public ActionResult faq()
-        {
-            return View();
-        }
-        public ActionResult icons()
-        {
-            return View();
-        }
-        public ActionResult mail()
-        {
-            return View();
-        }
-        public ActionResult single()
-        {
-            return View();
-        }
-        public ActionResult products()
-        {
-            return View();
-        }
-        public ActionResult products1()
-        {
-            return View();
-        }
-        public ActionResult products2()
-        {
-            return View();
-        }
+       
     }
 }
