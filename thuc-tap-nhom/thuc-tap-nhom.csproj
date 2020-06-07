@@ -334,6 +334,10 @@
     <Content Include="Views\Shop\ShopCategory.cshtml" />
     <Content Include="Views\Shop\ShopPartial.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Customer\CustomerProfile.cshtml" />
+    <Content Include="Views\Customer\Login.cshtml" />
+    <Content Include="Views\Order\OrderList.cshtml" />
+    <Content Include="Views\Order\OrderProductList.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

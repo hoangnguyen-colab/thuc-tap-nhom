@@ -1,0 +1,32 @@
+﻿@*@model IEnumerable<CNWeb.Models.OrderProductModel>*@
+@model IEnumerable<Models.EF.ORDERDETAIL>
+
+<table class="table" style="margin-bottom: 0;">
+    <tr>
+        <th class="text-center">
+            @Html.DisplayNameFor(Model => Model.ProductID)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(Model => Model.PRODUCT.ProductName)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(Model => Model.Quantity)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.ProductID)
+            </td>
+            <td class="text-center">
+                <a href="@Url.Action("Detail", "Shop", new { id = item.ProductID, url = item.PRODUCT.ProductURL })">
+                    @Html.DisplayFor(modelItem => item.PRODUCT.ProductName)
+                </a>
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+        </tr>
+    }
+</table>
