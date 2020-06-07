@@ -5,7 +5,7 @@ using System.Web;
 using DataAccess.DAO;
 using DataAccess.EF;
 
-namespace cong_nghe_web.Models
+namespace thuc_tap_nhom.Models
 {
     public class CartItemModel
     {
