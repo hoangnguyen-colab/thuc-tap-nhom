@@ -53,7 +53,7 @@ namespace thuc_tap_nhom.Controllers
             {
                 try
                 {
-                    int result = await new CustomerDAO().Register(new CUSTOMER()
+                    int result = await new CustomerDAO().Register(new Customer()
                     {
                         CustomerUsername = model.CustomerUsername,
                         CustomerPassword = model.CustomerPassword,
