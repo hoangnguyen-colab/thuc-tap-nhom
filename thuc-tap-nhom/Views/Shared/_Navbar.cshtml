@@ -1,98 +1,131 @@
-﻿<div class="header" id="home1">
-    <div class="container">
-        <div class="w3l_login">
-            <a href="#" data-toggle="modal" data-target="#myModal88"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
-        </div>
-        <div class="w3l_logo">
-            <h1><a href="@Url.Action("index","Home")">Electronic Store<span>Your stores. Your place.</span></a></h1>
-        </div>
-        <div class="search">
-            <input class="search_box" type="checkbox" id="search_box">
-            <label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
-            <div class="search_form">
-                <form action="#" method="post">
-                    <input type="text" name="Search" placeholder="Search...">
-                    <input type="submit" value="Send">
-                </form>
-            </div>
-        </div>
-        <div class="cart cart box_1">
-            <form action="#" method="post" class="last">
-                <input type="hidden" name="cmd" value="_cart" />
-                <input type="hidden" name="display" value="1" />
-                <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-            </form>
-        </div>
-    </div>
-</div>
-<div class="navigation">
-    <div class="container">
-        <nav class="navbar navbar-default">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header nav_2">
-                <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-                <ul class="nav navbar-nav">
-                    <li><a href="@Url.Action("index","Home")" class="act">Home</a></li>
-                    <!-- Mega Menu -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>Mobiles</h6>
-                                        <li><a href="@Url.Action("products","Home")">Mobile Phones</a></li>
-                                        <li><a href="@Url.Action("products","Home")">Mp3 Players <span>New</span></a></li>
-                                        <li><a href="@Url.Action("products","Home")">Popular Models</a></li>
-                                        <li><a href="@Url.Action("products","Home")">All Tablets<span>New</span></a></li>
+﻿@{
+    string cookieName = HttpContext.Current.User.Identity.Name;
+}
+
+<header>
+    <div class="header-area transparent-bar ptb-55">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-4">
+                    <div class="logo-small-device">
+                        <a href="@Url.Action("Index", "Home")"><img alt="" src="/Assets/img/logo/logo.png"></a>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-8">
+                    <div class="header-contact-menu-wrapper pl-45">
+                        <div class="header-contact">
+                            <p>WANT TO TALK WITH US  +01254 265 987</p>
+                        </div>
+                        <div class="menu-wrapper text-center">
+                            <button class="menu-toggle">
+                                <img class="s-open" alt="" src="~/Assets/img/icon-img/menu.png">
+                                <img class="s-close" alt="" src="~/Assets/img/icon-img/menu-close.png">
+                            </button>
+                            <div class="main-menu">
+                                <nav>
+                                    <ul>
+                                        <li><a href="@Url.Action("Index", "Home")">home</a></li>
+                                        <li>
+                                            <a href="@Url.Action("Shop", "Shop")">phone</a>
+                                            <ul class="dropdown partial-content" data-url="@Url.Action("NavbarCategory", "Home")">
+                                                <li><a>Loading</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="active">
+                                            <a href="@Url.Action("About", "Home")">about</a>
+                                        </li>
+                                        <li><a href="@Url.Action("Contact", "Home")">contact</a></li>
+                                        @if (!string.IsNullOrEmpty(cookieName))
+                                        {
+                                            <li>
+                                                <a href="javascript:void(0);">
+                                                    Hello @cookieName
+                                                </a>
+                                                <ul class="dropdown">
+                                                    <li>
+                                                        <a href="@Url.Action("CustomerProfile", "Customer", new { username = cookieName })">
+                                                            profile
+                                                        </a>
+                                                    </li>
+                                                    <li><a href="@Url.Action("Logout", "Customer")">logout</a></li>
+                                                </ul>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li>
+                                                <a href="@Url.Action("Login", "Customer")">login</a>
+                                            </li>
+                                        }
                                     </ul>
-                                </div>
-                                <div class="col-sm-3">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>Accessories</h6>
-                                        <li><a href="@Url.Action("products1","Home")">Laptop</a></li>
-                                        <li><a href="@Url.Action("products1","Home")">Desktop</a></li>
-                                        <li><a href="@Url.Action("products1","Home")">Wearables <span>New</span></a></li>
-                                        <li><a href="@Url.Action("products1","Home")"><i>Summer Store</i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-2">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>Home</h6>
-                                        <li><a href="@Url.Action("products2","Home")">Tv</a></li>
-                                        <li><a href="@Url.Action("products2","Home")">Camera</a></li>
-                                        <li><a href="@Url.Action("products2","Home")">AC</a></li>
-                                        <li><a href="@Url.Action("products2","Home")">Grinders</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="w3ls_products_pos">
-                                        <h4>30%<i>Off/-</i></h4>
-                                        <img src="images/1.jpg" alt=" " class="img-responsive" />
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
+                                </nav>
                             </div>
-                        </ul>
-                    </li>
-                    <li><a href="@Url.Action("about","Home")">About Us</a></li>
-                    <li class="w3pages">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("icons","Home")">Web Icons</a></li>
-                            <li><a href="@Url.Action("codes","Home")">Short Codes</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="@Url.Action("mail","Home")">Mail Us</a></li>
-                </ul>
+                        </div>
+                    </div>
+                    <div class="header-cart cart-small-device cart-partial">
+                    </div>
+                </div>
+                <!--Mobile-->
+                <div class="mobile-menu-area col-12">
+                    <div class="mobile-menu">
+                        <nav id="mobile-menu-active">
+                            <ul class="menu-overflow">
+                                <li><a href="@Url.Action("Index", "Home")">home</a></li>
+                                <li>
+                                    <a href="@Url.Action("Shop", "Shop")">phone</a>
+                                    <ul class="dropdown partial-content" data-url="@Url.Action("NavbarCategory", "Home")">
+                                        <li><a>Loading</a></li>
+                                    </ul>
+                                </li>
+                                <li class="active">
+                                    <a href="@Url.Action("About", "Home")">about</a>
+                                </li>
+                                <li><a href="@Url.Action("Contact", "Home")">contact</a></li>
+                                <li>
+                                    <a href="@Url.Action("Cart", "Cart")">cart</a>
+                                </li>
+                                @if (!string.IsNullOrEmpty(cookieName))
+                                {
+                                    <li>
+                                        <a>Hello @cookieName</a>
+                                        <ul class="dropdown">
+                                            <li>
+                                                <a href="@Url.Action("CustomerProfile", "Customer", new { username = cookieName })">
+                                                    profile
+                                                </a>
+                                            </li>
+                                            <li><a href="@Url.Action("Logout", "Customer")">logout</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a href="@Url.Action("Login", "Customer")">login</a>
+                                    </li>
+                                }
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
             </div>
-        </nav>
+        </div>
+        <div class="header-cart-wrapper">
+            <div class="header-cart cart-partial">
+            </div>
+        </div>
     </div>
-</div>
+</header>
+
+<script>
+    $(document).ready(function () {
+        $.get("@Url.Action("CartPartial", "Cart")",
+            function (data) {
+                $(".cart-partial").html(data);
+                $(".icon-cart").on("click", function () {
+                    $(this).parent().find('.shopping-cart-content').slideToggle('medium');
+                });
+            }
+        );
+    });
+</script>
