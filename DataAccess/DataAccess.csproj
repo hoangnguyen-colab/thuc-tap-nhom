@@ -50,11 +50,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\AdminDAO.cs" />
+    <Compile Include="DAO\BrandDAO.cs" />
+    <Compile Include="DAO\CustomerDAO.cs" />
+    <Compile Include="DAO\OrderDAO.cs" />
+    <Compile Include="DAO\OrderDetailDAO.cs" />
+    <Compile Include="DAO\OrderStatusDAO.cs" />
+    <Compile Include="DAO\ProductDAO.cs" />
     <Compile Include="EF\Admin.cs" />
     <Compile Include="EF\Category.cs" />
     <Compile Include="EF\Customer.cs" />
     <Compile Include="EF\EShopDbContext.cs" />
-    <Compile Include="EF\OderDetail.cs" />
+    <Compile Include="EF\OrderDetail.cs" />
     <Compile Include="EF\Order.cs" />
     <Compile Include="EF\OrderStatu.cs" />
     <Compile Include="EF\Product.cs" />

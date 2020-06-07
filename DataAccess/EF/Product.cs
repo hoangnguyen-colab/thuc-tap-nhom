@@ -12,7 +12,7 @@ namespace DataAccess.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            OderDetails = new HashSet<OderDetail>();
+            OderDetails = new HashSet<OrderDetail>();
         }
 
         public int ProductID { get; set; }
@@ -43,6 +43,6 @@ namespace DataAccess.EF
         public virtual Category Category { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OderDetail> OderDetails { get; set; }
+        public virtual ICollection<OrderDetail> OderDetails { get; set; }
     }
 }

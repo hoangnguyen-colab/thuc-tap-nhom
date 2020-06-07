@@ -6,8 +6,8 @@ namespace DataAccess.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("OderDetail")]
-    public partial class OderDetail
+    [Table("OrderDetail")]
+    public partial class OrderDetail
     {
         [Key]
         public int DetailID { get; set; }

@@ -1,6 +1,6 @@
--- USE master
--- alter database ElectricShop set single_user with rollback immediate
--- drop database ElectricShop
+USE master
+alter database ElectricShop set single_user with rollback immediate
+drop database ElectricShop
 
 CREATE DATABASE ElectricShop
 GO
@@ -70,7 +70,7 @@ CREATE TABLE [Order]
 )
 GO
 
-CREATE TABLE OderDetail
+CREATE TABLE OrderDetail
 (
     DetailID INT PRIMARY KEY IDENTITY(1, 1),
 

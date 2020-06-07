@@ -12,7 +12,7 @@ namespace DataAccess.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Order()
         {
-            OderDetails = new HashSet<OderDetail>();
+            OderDetails = new HashSet<OrderDetail>();
         }
 
         public int OrderID { get; set; }
@@ -30,7 +30,7 @@ namespace DataAccess.EF
         public virtual Customer Customer { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OderDetail> OderDetails { get; set; }
+        public virtual ICollection<OrderDetail> OderDetails { get; set; }
 
         public virtual OrderStatu OrderStatu { get; set; }
     }

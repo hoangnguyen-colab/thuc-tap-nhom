@@ -9,7 +9,7 @@ namespace thuc_tap_nhom.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult index()
+        public ActionResult Index()
         {
             return View();
         }
