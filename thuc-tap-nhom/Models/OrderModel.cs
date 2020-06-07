@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace cong_nghe_web.Models
+namespace thuc_tap_nhom.Models
 {
     public class OrderModel
     {
