@@ -1,5 +1,5 @@
-﻿using cong_nghe_web.Models;
-using Models.DAO;
+﻿using thuc_tap_nhom.Models;
+using DataAccess.DAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace cong_nghe_webWeb.Controllers
+namespace thuc_tap_nhom.Controllers
 {
     public class OrderController : Controller
     {
