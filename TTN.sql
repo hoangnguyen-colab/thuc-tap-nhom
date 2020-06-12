@@ -107,7 +107,7 @@ VALUES
     (2, N'Đang giao hàng', GETDATE(), NULL),
     (3, N'Đã giao hàng', GETDATE(), NULL),
     (4, N'Hàng có lỗi', GETDATE(), NULL),
-    (5, N'Đã hủy', GETDATE())
+    (5, N'Đã hủy', GETDATE(), NULL)
 GO
 
 --Admin
