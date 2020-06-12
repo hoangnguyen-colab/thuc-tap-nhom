@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Models.EF.PRODUCT>
+﻿@model IEnumerable<DataAccess.EF.Product>
 
 @foreach (var item in Model)
 {
@@ -23,14 +23,8 @@
                         </h4>
                     </div>
                     <div class="product-price">
-                        @if (item.PromotionPrice.HasValue)
-                        {
-                            <span>@item.PromotionPrice.Value.ToString("#,##0")₫</span>
-                        }
-                        else
-                        {
-                            <span>@item.ProductPrice.ToString("#,##0")₫</span>
-                        }
+                        <span>@item.ProductPrice.ToString("#,##0")₫</span>
+
                     </div>
                 </div>
             </div>
@@ -48,14 +42,8 @@
                     <i class="fa fa-star reting-color"></i>
                 </div>
                 <div class="product-price">
-                    @if (item.PromotionPrice.HasValue)
-                    {
-                        <span>@item.PromotionPrice.Value.ToString("#,##0")₫</span>
-                    }
-                    else
-                    {
-                        <span>@item.ProductPrice.ToString("#,##0")₫</span>
-                    }
+                    <span>@item.ProductPrice.ToString("#,##0")₫</span>
+
                 </div>
                 <p>@item.ProductDescription</p>
                 <div class="shop-list-cart">

@@ -1,5 +1,5 @@
 ﻿@*@model IEnumerable<CNWeb.Models.OrderModel>*@
-@model IEnumerable<Models.EF.ORDER>
+@model IEnumerable<DataAccess.EF.Order>
 
 <link href="~/Assets/css/order-list.css" rel="stylesheet" />
 
@@ -30,10 +30,10 @@
                         @Html.DisplayFor(modelItem => item.OrderDate)
                     </td>
                     <th class="text-center">
-                        @Html.DisplayFor(modelItem => item.ORDERSTATU.StatusName)
+                        @Html.DisplayFor(modelItem => item.OrderStatu.StatusName)
                     </th>
                     <td class="text-center">
-                        @if (item.ORDERSTATU.StatusID.Equals(1))
+                        @if (item.OrderStatu.StatusID.Equals(1))
                         {
                             <button class="btn btn-danger" id="@item.OrderID"
                                     onclick="return CancelOrder('@item.OrderID')">

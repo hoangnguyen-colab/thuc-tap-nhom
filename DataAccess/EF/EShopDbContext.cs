@@ -15,8 +15,8 @@ namespace DataAccess.EF
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<OrderStatu> OrderStatus { get; set; }
         public virtual DbSet<Product> Products { get; set; }
 
@@ -43,7 +43,6 @@ namespace DataAccess.EF
                 .Property(e => e.ProductPrice)
                 .HasPrecision(18, 0);
         }
-
         public void FixEfProviderServicesProblem()
         {
             var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;

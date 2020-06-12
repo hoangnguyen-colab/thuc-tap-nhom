@@ -23,6 +23,7 @@ namespace DataAccess.DAO
             {
                 Total = total,
                 OrderDate = DateTime.Now,
+                StatusChangeDate = DateTime.Now,
                 OrderStatusID = 1,
                 CustomerID = CustomerID
             };

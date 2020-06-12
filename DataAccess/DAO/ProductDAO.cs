@@ -16,6 +16,16 @@ namespace DataAccess.DAO
             db = new EShopDbContext();
         }
 
+        public async Task<List<Product>> SelectCondition(string cond, int number)
+        {
+            if (cond.Equals("top"))
+                return await db.Products.OrderBy(x => x.ViewCount).Take(number).ToListAsync();
+            else if (cond.Equals("newest"))
+                return await db.Products.OrderByDescending(x => x.CreatedDate).Take(number).ToListAsync();
+            return null;
+
+        }
+
         public async Task<int> CreateProduct(Product model)
         {
             try

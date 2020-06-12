@@ -56,5 +56,19 @@ namespace thuc_tap_nhom.Controllers
                 return HttpNotFound();
             }
         }
+
+        [HttpPost]
+        public async Task<JsonResult> GetProductName(string prefix)
+        {
+            return Json(new { name = await new ProductDAO().LoadName(prefix) }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> SelectTop(string cond)
+        {
+            int top = 8;
+            var list = await new ProductDAO().SelectCondition(cond, top);
+            return PartialView("SelectTop", list);
+        }
     }
 }

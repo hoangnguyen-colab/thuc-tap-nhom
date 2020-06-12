@@ -61,8 +61,8 @@
     <Compile Include="EF\Category.cs" />
     <Compile Include="EF\Customer.cs" />
     <Compile Include="EF\EShopDbContext.cs" />
-    <Compile Include="EF\OrderDetail.cs" />
     <Compile Include="EF\Order.cs" />
+    <Compile Include="EF\OrderDetail.cs" />
     <Compile Include="EF\OrderStatu.cs" />
     <Compile Include="EF\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

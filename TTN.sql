@@ -1,6 +1,6 @@
-USE master
-alter database ElectricShop set single_user with rollback immediate
-drop database ElectricShop
+-- USE master
+-- alter database ElectricShop set single_user with rollback immediate
+-- drop database ElectricShop
 
 CREATE DATABASE ElectricShop
 GO
@@ -28,6 +28,7 @@ CREATE TABLE Product
     ProductStock INT,
     ProductStatus BIT DEFAULT 1,
     ProductURL NVARCHAR(250),
+    ViewCount INT,
 
     CreatedDate DATETIME DEFAULT GETDATE(),
     ModifiedDate DATETIME DEFAULT NULL,
@@ -99,19 +100,34 @@ VALUES
     (N'Điều hòa', N'dieu-hoa', GETDATE(), NULL),
     (N'Tủ lạnh', N'tu-lanh', GETDATE(), NULL)
 GO
+
+INSERT INTO OrderStatus
+VALUES
+    (1, N'Đang xử lý', GETDATE(), NULL),
+    (2, N'Đang giao hàng', GETDATE(), NULL),
+    (3, N'Đã giao hàng', GETDATE(), NULL),
+    (4, N'Hàng có lỗi', GETDATE(), NULL),
+    (5, N'Đã hủy', GETDATE())
+GO
+
+--Admin
+INSERT INTO Admin
+VALUES(N'hoang', N'4297f44b13955235245b2497399d7a93', N'Nguyễn Hoàng', GETDATE())
+GO
 --products
 INSERT INTO dbo.Product
 VALUES
-    ( N'SmartTV' , -- ProductName - nvarchar(250)
-        10000000 , -- ProductPrice - decimal
-        N'' , -- Description - nvarchar(max)
-        N'https://cdn.tgdd.vn/Products/Images/1942/210506/tcl-l32s6300-12-550x340.jpg' , -- ProductImage - nvarchar(max)
-        20 , -- ProductStock - int
-        1 , -- ProductStatus - bit
-        N'smarttv' , -- ProductURL - nvarchar(250)
-        GETDATE(), -- CreatedDate - datetime
+    ( N'SmartTV',
+        10000000,
+        N'',
+        N'https://cdn.tgdd.vn/Products/Images/1942/210506/tcl-l32s6300-12-550x340.jpg',
+        20,
+        1,
+        N'smarttv',
+        199,
+        GETDATE(),
         NULL,
-        1  -- CategoryID - int
+        1
 )
 INSERT INTO dbo.Product
 VALUES
@@ -122,6 +138,7 @@ VALUES
         15, -- ProductStock - int
         1 , -- ProductStatus - bit
         N'androidtv' , -- ProductURL - nvarchar(250)
+        89,
         GETDATE() , -- CreatedDate - datetime
         NULL, 
         1  -- CategoryID - int
@@ -135,6 +152,7 @@ VALUES
         10 , -- ProductStock - int
         1 , -- ProductStatus - bit
         N'internettv' , -- ProductURL - nvarchar(250)
+        320,
         GETDATE() , -- CreatedDate - datetime
         NULL, 
         1  -- CategoryID - int
@@ -148,6 +166,7 @@ VALUES
         20 , -- ProductStock - int
         1 , -- ProductStatus - bit
         N'inverter-aqua-aqa-kcrv9vks' , -- ProductURL - nvarchar(250)
+        28,
         GETDATE() , -- CreatedDate - datetime
         NULL, 
         2  -- CategoryID - int
@@ -161,6 +180,7 @@ VALUES
         18 , -- ProductStock - int
         1 , -- ProductStatus - bit
         N'daikin-ftq35savmv' , -- ProductURL - nvarchar(250)
+        111,
         GETDATE() , -- CreatedDate - datetime
         NULL, 
         2  -- CategoryID - int
@@ -174,6 +194,7 @@ VALUES
         25 , -- ProductStock - int
         1 , -- ProductStatus - bit
         N'media-ms11d1a' , -- ProductURL - nvarchar(250)
+        85,
         GETDATE() , -- CreatedDate - datetime
         NULL, 
         2  -- CategoryID - int
@@ -187,6 +208,7 @@ VALUES
         16 , -- ProductStock - int
         1 , -- ProductStatus - bit
         N'samsung-255-lít-rt25m4033s8' , -- ProductURL - nvarchar(250)
+        123,
         GETDATE() , -- CreatedDate - datetime
         NULL, 
         3  -- CategoryID - int
@@ -200,6 +222,7 @@ VALUES
         22 , -- ProductStock - int
         1 , -- ProductStatus - bit
         N'sharp196-lit-sj-x201e-ds-inverter' , -- ProductURL - nvarchar(250)
+        54,
         GETDATE() , -- CreatedDate - datetime
         NULL, 
         3  -- CategoryID - int
@@ -213,6 +236,7 @@ VALUES
         17 , -- ProductStock - int
         1 , -- ProductStatus - bit
         N'panasonic-nr-bl267vsv1-inverter-234l' , -- ProductURL - nvarchar(250)
+        32,
         GETDATE() , -- CreatedDate - datetime
         NULL, 
         3  -- CategoryID - int
@@ -226,6 +250,7 @@ VALUES
         16 , -- ProductStock - int
         1 , -- ProductStatus - bit
         N'lg-inverter-613-lit-gr-b247jds' , -- ProductURL - nvarchar(250)
+        420,
         GETDATE() , -- CreatedDate - datetime
         NULL, 
         3  -- CategoryID - int
@@ -236,3 +261,5 @@ VALUES
 --         {
 --             var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
 --         }
+
+select * from [Order]

@@ -1,5 +1,5 @@
 ﻿@*@model IEnumerable<CNWeb.Models.OrderProductModel>*@
-@model IEnumerable<Models.EF.ORDERDETAIL>
+@model IEnumerable<DataAccess.EF.OrderDetail>
 
 <table class="table" style="margin-bottom: 0;">
     <tr>
@@ -7,7 +7,7 @@
             @Html.DisplayNameFor(Model => Model.ProductID)
         </th>
         <th class="text-center">
-            @Html.DisplayNameFor(Model => Model.PRODUCT.ProductName)
+            @Html.DisplayNameFor(Model => Model.Product.ProductName)
         </th>
         <th class="text-center">
             @Html.DisplayNameFor(Model => Model.Quantity)
@@ -20,8 +20,8 @@
                 @Html.DisplayFor(modelItem => item.ProductID)
             </td>
             <td class="text-center">
-                <a href="@Url.Action("Detail", "Shop", new { id = item.ProductID, url = item.PRODUCT.ProductURL })">
-                    @Html.DisplayFor(modelItem => item.PRODUCT.ProductName)
+                <a href="@Url.Action("Detail", "Shop", new { id = item.ProductID, url = item.Product.ProductURL })">
+                    @Html.DisplayFor(modelItem => item.Product.ProductName)
                 </a>
             </td>
             <td class="text-center">

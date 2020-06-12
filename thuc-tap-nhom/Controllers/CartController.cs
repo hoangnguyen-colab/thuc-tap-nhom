@@ -44,6 +44,34 @@ namespace thuc_tap_nhom.Controllers
             return View(await GetCartItem());
         }
 
+        [Authorize]
+        [HttpPost]
+        public async Task<JsonResult> SubmitCheckout()
+        {
+            var customer = await new CustomerDAO().LoadByUsername(HttpContext.User.Identity.Name);
+            var total = await GetTotal();
+            var order = await new OrderDAO().AddOrder(customer.CustomerID, total);
+            if (order != 0)
+            {
+                var orderdetail = new OrderDetailDAO();
+                foreach (var item in (List<CartSession>)Session["cart"])
+                {
+                    await orderdetail.AddOrderDetail(order, item.ProductID, item.Quantity);
+                }
+                Session["cart"] = null;
+                return Json(new { Success = true, ID = order }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { Success = false }, JsonRequestBehavior.AllowGet);
+            //try
+            //{
+
+            //}
+            //catch
+            //{
+            //    return Json(new { Success = false }, JsonRequestBehavior.AllowGet);
+            //}
+        }
+
         [HttpPost]
         public JsonResult OrderNow(int prodId, int quantity)
         {
@@ -94,7 +122,7 @@ namespace thuc_tap_nhom.Controllers
 
         public async Task<ActionResult> CartPartial()
         {
-            return PartialView("_Cart", await GetCartItem());
+            return PartialView("CartPartial", await GetCartItem());
         }
 
         public async Task<List<CartItemModel>> GetCartItem()
@@ -113,32 +141,6 @@ namespace thuc_tap_nhom.Controllers
             return list;
         }
 
-        [Authorize]
-        [HttpPost]
-        public async Task<JsonResult> SubmitCheckout()
-        {
-            try
-            {
-                var customer = await new CustomerDAO().LoadByUsername(HttpContext.User.Identity.Name);
-                var order = await new OrderDAO().AddOrder(customer.CustomerID, await GetTotal());
-                if (order != 0)
-                {
-                    var orderdetail = new OrderDetailDAO();
-                    foreach (var item in (List<CartSession>)Session["cart"])
-                    {
-                        await orderdetail.AddOrderDetail(order, item.ProductID, item.Quantity);
-                    }
-                    Session["cart"] = null;
-                    return Json(new { Success = true, ID = order }, JsonRequestBehavior.AllowGet);
-                }
-                return Json(new { Success = false }, JsonRequestBehavior.AllowGet);
-            }
-            catch
-            {
-                return Json(new { Success = false }, JsonRequestBehavior.AllowGet);
-            }
-        }
-
         public async Task<decimal> GetTotal()
         {
             decimal total = 0;
@@ -151,7 +153,6 @@ namespace thuc_tap_nhom.Controllers
                 {
                     var product = await dao.LoadByID(item.ProductID);
                     total += product.ProductPrice * item.Quantity;
-
                 }
             }
             return total;

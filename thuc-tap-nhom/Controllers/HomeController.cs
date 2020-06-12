@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Threading.Tasks;
 
 namespace thuc_tap_nhom.Controllers
 {
@@ -31,7 +32,7 @@ namespace thuc_tap_nhom.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> NavbarCategory()
         {
-            return PartialView("_NavbarCategory", await new BrandDAO().LoadData());
+            return PartialView("NavbarCategory", await new BrandDAO().LoadData());
         }
     }
 }

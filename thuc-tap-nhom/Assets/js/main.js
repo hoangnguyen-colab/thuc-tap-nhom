@@ -151,7 +151,7 @@
     })
     
     /* cart */
-    $(".icon-cart").on("click", function() {
+    $(".icon-cart").on("click", function () {
         $(this).parent().find('.shopping-cart-content').slideToggle('medium');
     })
     
@@ -243,7 +243,7 @@
     
     /* product-dec-slider active */
     $('.product-dec-slider').owlCarousel({
-        loop: true,
+        loop: false,
         autoplay: false,
         autoplayTimeout: 5000,
         navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
@@ -284,7 +284,6 @@
     
     
     // Instantiate EasyZoom instances
-    var $easyzoom = $('.easyzoom').easyZoom();
     
     
     /*--- showlogin toggle function ----*/
