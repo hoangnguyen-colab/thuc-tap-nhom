@@ -1,5 +1,5 @@
-﻿using Models.DAO;
-using Models.EF;
+﻿using DataAccess.DAO;
+using DataAccess.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;

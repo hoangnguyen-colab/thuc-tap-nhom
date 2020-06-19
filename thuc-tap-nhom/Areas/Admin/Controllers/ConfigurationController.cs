@@ -1,5 +1,5 @@
-﻿using Models.DAO;
-using Models.EF;
+﻿using DataAccess.DAO;
+using DataAccess.EF;
 using cong_nghe_web.Areas.Admin.Models;
 using System;
 using System.Collections.Generic;
