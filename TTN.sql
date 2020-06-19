@@ -14,8 +14,7 @@ CREATE TABLE Category
     CategoryName NVARCHAR(250) NOT NULL,
     CategoryURL NVARCHAR(50),
 
-    CreatedDate DATETIME DEFAULT GETDATE(),
-    ModifiedDate DATETIME DEFAULT NULL
+    CreatedDate DATETIME DEFAULT GETDATE()
 )
 
 CREATE TABLE Product
@@ -31,7 +30,6 @@ CREATE TABLE Product
     ViewCount INT,
 
     CreatedDate DATETIME DEFAULT GETDATE(),
-    ModifiedDate DATETIME DEFAULT NULL,
     CategoryID INT REFERENCES Category(CategoryID)
 )
 
@@ -43,10 +41,9 @@ CREATE TABLE Customer
     CustomerEmail NVARCHAR(250),
     CustomerName NVARCHAR(250) NOT NULL,
     CustomerPhone NVARCHAR(20),
+    CustomerAddress NVARCHAR(1000),
 
     CreatedDate DATETIME DEFAULT GETDATE(),
-    ModifiedDate DATETIME DEFAULT NULL,
-    LoginIP VARCHAR(250) DEFAULT NULL
 )
 
 CREATE TABLE OrderStatus
@@ -55,7 +52,6 @@ CREATE TABLE OrderStatus
     StatusName NVARCHAR(250) NOT NULL,
 
     CreatedDate DATETIME DEFAULT GETDATE(),
-    ModifiedDate DATETIME DEFAULT NULL
 )
 GO
 
@@ -64,6 +60,9 @@ CREATE TABLE [Order]
     OrderID INT PRIMARY KEY IDENTITY(1, 1),
     Total DECIMAL(18, 0),
     OrderDate DATETIME DEFAULT GETDATE(),
+    CustomerName NVARCHAR(255) NOT NULL,
+    CustomerPhone NVARCHAR(20) NOT NULL,
+    CustomerAddress NVARCHAR(255) NOT NULL,
 
     OrderStatusID INT REFERENCES OrderStatus(StatusID),
     StatusChangeDate DATETIME DEFAULT NULL,
@@ -89,25 +88,23 @@ CREATE TABLE [Admin]
     AdminName NVARCHAR(250),
 
     CreatedDate DATETIME DEFAULT GETDATE(),
-    LastLogin DATETIME DEFAULT NULL,
-    LoginIP VARCHAR(250) DEFAULT NULL
 )
 GO
 
 INSERT INTO Category
 VALUES
-    (N'Ti vi', N'ti-vi', GETDATE(), NULL),
-    (N'Điều hòa', N'dieu-hoa', GETDATE(), NULL),
-    (N'Tủ lạnh', N'tu-lanh', GETDATE(), NULL)
+    (N'Ti vi', N'ti-vi', GETDATE()),
+    (N'Điều hòa', N'dieu-hoa', GETDATE()),
+    (N'Tủ lạnh', N'tu-lanh', GETDATE())
 GO
 
 INSERT INTO OrderStatus
 VALUES
-    (1, N'Đang xử lý', GETDATE(), NULL),
-    (2, N'Đang giao hàng', GETDATE(), NULL),
-    (3, N'Đã giao hàng', GETDATE(), NULL),
-    (4, N'Hàng có lỗi', GETDATE(), NULL),
-    (5, N'Đã hủy', GETDATE(), NULL)
+    (1, N'Đang xử lý', GETDATE()),
+    (2, N'Đang giao hàng', GETDATE()),
+    (3, N'Đã giao hàng', GETDATE()),
+    (4, N'Hàng có lỗi', GETDATE()),
+    (5, N'Đã hủy', GETDATE())
 GO
 
 --Admin
@@ -115,6 +112,7 @@ INSERT INTO Admin
 VALUES(N'hoang', N'4297f44b13955235245b2497399d7a93', N'Nguyễn Hoàng', GETDATE())
 GO
 --products
+
 INSERT INTO dbo.Product
 VALUES
     ( N'SmartTV',
@@ -126,9 +124,9 @@ VALUES
         N'smarttv',
         199,
         GETDATE(),
-        NULL,
         1
 )
+
 INSERT INTO dbo.Product
 VALUES
     ( N'AndroidTV' , -- ProductName - nvarchar(250)
@@ -140,7 +138,6 @@ VALUES
         N'androidtv' , -- ProductURL - nvarchar(250)
         89,
         GETDATE() , -- CreatedDate - datetime
-        NULL, 
         1  -- CategoryID - int
 )
 INSERT INTO dbo.Product
@@ -154,7 +151,6 @@ VALUES
         N'internettv' , -- ProductURL - nvarchar(250)
         320,
         GETDATE() , -- CreatedDate - datetime
-        NULL, 
         1  -- CategoryID - int
 )
 INSERT INTO dbo.Product
@@ -168,7 +164,6 @@ VALUES
         N'inverter-aqua-aqa-kcrv9vks' , -- ProductURL - nvarchar(250)
         28,
         GETDATE() , -- CreatedDate - datetime
-        NULL, 
         2  -- CategoryID - int
 )
 INSERT INTO dbo.Product
@@ -182,7 +177,6 @@ VALUES
         N'daikin-ftq35savmv' , -- ProductURL - nvarchar(250)
         111,
         GETDATE() , -- CreatedDate - datetime
-        NULL, 
         2  -- CategoryID - int
 )
 INSERT INTO dbo.Product
@@ -196,7 +190,6 @@ VALUES
         N'media-ms11d1a' , -- ProductURL - nvarchar(250)
         85,
         GETDATE() , -- CreatedDate - datetime
-        NULL, 
         2  -- CategoryID - int
 )
 INSERT INTO dbo.Product
@@ -210,7 +203,6 @@ VALUES
         N'samsung-255-lít-rt25m4033s8' , -- ProductURL - nvarchar(250)
         123,
         GETDATE() , -- CreatedDate - datetime
-        NULL, 
         3  -- CategoryID - int
 )
 INSERT INTO dbo.Product
@@ -224,7 +216,6 @@ VALUES
         N'sharp196-lit-sj-x201e-ds-inverter' , -- ProductURL - nvarchar(250)
         54,
         GETDATE() , -- CreatedDate - datetime
-        NULL, 
         3  -- CategoryID - int
 )
 INSERT INTO dbo.Product
@@ -238,7 +229,6 @@ VALUES
         N'panasonic-nr-bl267vsv1-inverter-234l' , -- ProductURL - nvarchar(250)
         32,
         GETDATE() , -- CreatedDate - datetime
-        NULL, 
         3  -- CategoryID - int
 )
 INSERT INTO dbo.Product
@@ -252,7 +242,6 @@ VALUES
         N'lg-inverter-613-lit-gr-b247jds' , -- ProductURL - nvarchar(250)
         420,
         GETDATE() , -- CreatedDate - datetime
-        NULL, 
         3  -- CategoryID - int
 )
 
@@ -261,5 +250,3 @@ VALUES
 --         {
 --             var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
 --         }
-
-select * from [Order]

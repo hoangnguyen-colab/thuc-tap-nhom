@@ -38,8 +38,6 @@ namespace DataAccess.EF
 
         public DateTime? CreatedDate { get; set; }
 
-        public DateTime? ModifiedDate { get; set; }
-
         public int? CategoryID { get; set; }
 
         public virtual Category Category { get; set; }

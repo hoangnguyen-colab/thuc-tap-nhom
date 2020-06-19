@@ -32,7 +32,7 @@ namespace thuc_tap_nhom.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> NavbarCategory()
         {
-            return PartialView("NavbarCategory", await new BrandDAO().LoadData());
+            return PartialView("NavbarCategory", await new CategoryDAO().LoadData());
         }
     }
 }

@@ -23,10 +23,5 @@ namespace DataAccess.EF
         public string AdminName { get; set; }
 
         public DateTime? CreatedDate { get; set; }
-
-        public DateTime? LastLogin { get; set; }
-
-        [StringLength(250)]
-        public string LoginIP { get; set; }
     }
 }

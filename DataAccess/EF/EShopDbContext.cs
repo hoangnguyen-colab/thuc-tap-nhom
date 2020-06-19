@@ -22,14 +22,6 @@ namespace DataAccess.EF
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Admin>()
-                .Property(e => e.LoginIP)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Customer>()
-                .Property(e => e.LoginIP)
-                .IsUnicode(false);
-
             modelBuilder.Entity<Order>()
                 .Property(e => e.Total)
                 .HasPrecision(18, 0);
@@ -42,10 +34,6 @@ namespace DataAccess.EF
             modelBuilder.Entity<Product>()
                 .Property(e => e.ProductPrice)
                 .HasPrecision(18, 0);
-        }
-        public void FixEfProviderServicesProblem()
-        {
-            var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }
     }
 }

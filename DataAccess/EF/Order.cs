@@ -21,6 +21,18 @@ namespace DataAccess.EF
 
         public DateTime? OrderDate { get; set; }
 
+        [Required]
+        [StringLength(255)]
+        public string CustomerName { get; set; }
+
+        [Required]
+        [StringLength(20)]
+        public string CustomerPhone { get; set; }
+
+        [Required]
+        [StringLength(255)]
+        public string CustomerAddress { get; set; }
+
         public int? OrderStatusID { get; set; }
 
         public DateTime? StatusChangeDate { get; set; }

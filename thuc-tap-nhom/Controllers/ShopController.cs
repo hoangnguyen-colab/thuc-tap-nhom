@@ -28,7 +28,7 @@ namespace thuc_tap_nhom.Controllers
         [Route("thuong-hieu/{url}-{id:int}")]
         public async Task<ActionResult> ShopCategory(int id, string url, string sort)
         {
-            var brand = await new BrandDAO().LoadByID(id);
+            var brand = await new CategoryDAO().LoadByID(id);
             if (brand == null)
             {
                 return HttpNotFound();
