@@ -1,5 +1,5 @@
-﻿using Models.DAO;
-using Models.EF;
+﻿using DataAccess.DAO;
+using DataAccess.EF;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace cong_nghe_web.Areas.Admin.Controllers
+namespace thuc_tap_nhom.Areas.Admin.Controllers
 {
     [RouteArea("Admin")]
     public class OrderedController : BaseController
@@ -20,7 +20,7 @@ namespace cong_nghe_web.Areas.Admin.Controllers
 
         public async Task<ActionResult> OrderList()
         {
-            var list = new List<ORDERSTATU>();
+            var list = new List<OrderStatu>();
             foreach (var item in await new OrderStatusDAO().LoadStatus())
             {
                 if (item.StatusID != 5)
@@ -55,7 +55,7 @@ namespace cong_nghe_web.Areas.Admin.Controllers
             var db = await new OrderStatusDAO().LoadStatus();
             if (id == 2)
             {
-                var list = new List<ORDERSTATU>();
+                var list = new List<OrderStatu>();
                 list.Add(db.Where(x => x.StatusID == 3).FirstOrDefault());
                 list.Add(db.Where(x => x.StatusID == 4).FirstOrDefault());
 
@@ -63,7 +63,7 @@ namespace cong_nghe_web.Areas.Admin.Controllers
             }
             else if (id == 1)
             {
-                var list = new List<ORDERSTATU>();
+                var list = new List<OrderStatu>();
                 foreach (var item in db)
                 {
                     if (item.StatusID != 1)
@@ -73,7 +73,7 @@ namespace cong_nghe_web.Areas.Admin.Controllers
                 }
                 return Json(db, JsonRequestBehavior.AllowGet);
             }
-            return Json(new List<ORDERSTATU>(), JsonRequestBehavior.AllowGet);
+            return Json(new List<OrderStatu>(), JsonRequestBehavior.AllowGet);
         }
     }
 }
