@@ -35,12 +35,10 @@ namespace DataAccess.EF
         [StringLength(20)]
         public string CustomerPhone { get; set; }
 
+        [StringLength(1000)]
+        public string CustomerAddress { get; set; }
+
         public DateTime? CreatedDate { get; set; }
-
-        public DateTime? ModifiedDate { get; set; }
-
-        [StringLength(250)]
-        public string LoginIP { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }

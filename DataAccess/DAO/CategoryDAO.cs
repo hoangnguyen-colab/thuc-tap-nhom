@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace DataAccess.DAO
 {
-    public class BrandDAO
+    public class CategoryDAO
     {
         EShopDbContext db = null;
-        public BrandDAO()
+        public CategoryDAO()
         {
             db = new EShopDbContext();
             db.Configuration.ProxyCreationEnabled = false;
@@ -35,7 +35,7 @@ namespace DataAccess.DAO
                 .SingleOrDefaultAsync();
         }
 
-        public async Task<int> CreateBrand(Category cate)
+        public async Task<int> CreateCategory(Category cate)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace DataAccess.DAO
             }
         }
 
-        public async Task<bool> DeleteBrand(int ID)
+        public async Task<bool> DeleteCategory(int ID)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace DataAccess.DAO
             }
         }
 
-        public async Task<int> EditBrand(Category cate, int ID)
+        public async Task<int> EditCategory(Category cate, int ID)
         {
             try
             {
