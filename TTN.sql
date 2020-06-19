@@ -14,8 +14,7 @@ CREATE TABLE Category
     CategoryName NVARCHAR(250) NOT NULL,
     CategoryURL NVARCHAR(50),
 
-    CreatedDate DATETIME DEFAULT GETDATE(),
-    ModifiedDate DATETIME DEFAULT NULL
+    CreatedDate DATETIME DEFAULT GETDATE()
 )
 
 CREATE TABLE Product
@@ -31,7 +30,6 @@ CREATE TABLE Product
     ViewCount INT,
 
     CreatedDate DATETIME DEFAULT GETDATE(),
-    ModifiedDate DATETIME DEFAULT NULL,
     CategoryID INT REFERENCES Category(CategoryID)
 )
 
@@ -45,8 +43,6 @@ CREATE TABLE Customer
     CustomerPhone NVARCHAR(20),
 
     CreatedDate DATETIME DEFAULT GETDATE(),
-    ModifiedDate DATETIME DEFAULT NULL,
-    LoginIP VARCHAR(250) DEFAULT NULL
 )
 
 CREATE TABLE OrderStatus
@@ -55,7 +51,6 @@ CREATE TABLE OrderStatus
     StatusName NVARCHAR(250) NOT NULL,
 
     CreatedDate DATETIME DEFAULT GETDATE(),
-    ModifiedDate DATETIME DEFAULT NULL
 )
 GO
 
@@ -89,8 +84,6 @@ CREATE TABLE [Admin]
     AdminName NVARCHAR(250),
 
     CreatedDate DATETIME DEFAULT GETDATE(),
-    LastLogin DATETIME DEFAULT NULL,
-    LoginIP VARCHAR(250) DEFAULT NULL
 )
 GO
 
