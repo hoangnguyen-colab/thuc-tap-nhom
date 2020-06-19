@@ -1,4 +1,4 @@
-﻿using Models.EF;
+﻿using DataAccess.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace thuc_tap_nhom.Areas.Admin.Controllers
     {
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var session = Session["AdminLogin"] as ADMIN;
+            var session = Session["AdminLogin"] as Admin;
             if (session == null)
             {
                 filterContext.Result = new RedirectToRouteResult(
