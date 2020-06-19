@@ -127,6 +127,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ConfigurationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderedController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Models\ProductModel.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -323,7 +332,6 @@
     <Content Include="Assets\fonts\themify.eot" />
     <Content Include="Assets\fonts\themify.ttf" />
     <Content Include="Assets\fonts\themify.woff" />
-    <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\assets\icons\fonts\fontawesome-webfont.eot" />
     <Content Include="Areas\Admin\assets\icons\fonts\fontawesome-webfont.ttf" />
     <Content Include="Areas\Admin\assets\icons\fonts\fontawesome-webfont.woff" />
@@ -337,6 +345,24 @@
     <Content Include="Areas\Admin\assets\icons\fonts\themify.ttf" />
     <Content Include="Areas\Admin\assets\icons\fonts\themify.woff" />
     <Content Include="Areas\Admin\assets\plugins\datatables\json\scroller-demo.json" />
+    <Content Include="Areas\Admin\Views\Admin\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\BrandList.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\BrandListPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\CreateBrand.cshtml" />
+    <Content Include="Areas\Admin\Views\Configuration\CreateConfigurationPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\CustomerList.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Ordered\Order.cshtml" />
+    <Content Include="Areas\Admin\Views\Ordered\OrderList.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\CreateProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\CreateProductPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\ProductDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\ProductList.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LeftBar.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -380,11 +406,7 @@
     <Content Include="Views\Cart\CartPartial.cshtml" />
     <Content Include="Views\Home\NavbarCategory.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
-    <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

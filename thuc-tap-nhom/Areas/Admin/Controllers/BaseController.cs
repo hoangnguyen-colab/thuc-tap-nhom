@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace cong_nghe_web.Areas.Admin.Controllers
+namespace thuc_tap_nhom.Areas.Admin.Controllers
 {
     public class BaseController : Controller
     {
