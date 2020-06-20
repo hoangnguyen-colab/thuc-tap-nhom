@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Models.EF.ORDER>
+﻿@model IEnumerable<DataAccess.EF.Order>
 
 <link href="~/Areas/Admin/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 <link href="~/Areas/Admin/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -60,7 +60,7 @@
                 </td>
                 <td>
                     <select id="orderstatus-@item.OrderID" onchange="return ChangeOrder('@item.OrderID', '@item.OrderStatusID')">
-                        <option value="@item.OrderStatusID" selected="selected">@item.ORDERSTATU.StatusName</option>
+                        <option value="@item.OrderStatusID" selected="selected">@item.OrderStatu.StatusName</option>
                         @*@foreach (var stat in ViewBag.Status)
                             {
                                 if (stat.StatusID == item.OrderStatusID)

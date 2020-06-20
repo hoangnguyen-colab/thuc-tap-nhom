@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DataAccess.EF.BRAND>
+﻿@model IEnumerable<DataAccess.EF.Category>
 
 
 <link href="~/Areas/Admin/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -28,20 +28,20 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr id="row-@item.BrandID">
+                <tr id="row-@item.CategoryID">
                     <td class="text-center">
-                        @Html.DisplayFor(modelItem => item.BrandID)
+                        @Html.DisplayFor(modelItem => item.CategoryID)
                     </td>
-                    <td class="text-center" id="cate-@item.BrandID-input">
-                        <input class="text-center form-control" id="cate-@item.BrandID"
-                               value="@Html.DisplayFor(modelItem => item.BrandName)"
+                    <td class="text-center" id="cate-@item.CategoryID-input">
+                        <input class="text-center form-control" id="cate-@item.CategoryID"
+                               value="@Html.DisplayFor(modelItem => item.CategoryName)"
                                readonly />
                     </td>
-                    <td class="text-center" id="cate-@item.BrandID-text">
-                        @Html.DisplayFor(modelItem => item.BrandName)
+                    <td class="text-center" id="cate-@item.CategoryID-text">
+                        @Html.DisplayFor(modelItem => item.CategoryName)
                     </td>
                     <td class="text-center">
-                        @Html.DisplayFor(modelItem => item.BrandURL)
+                        @Html.DisplayFor(modelItem => item.CategoryURL)
                     </td>
                     <td class="text-center">
                         @Html.DisplayFor(modelItem => item.CreatedDate)
@@ -49,20 +49,20 @@
                     <td class="text-center">
                         <button class="btn btn-sm btn-primary"
                                 type="submit" value="Edit"
-                                id="edit-@item.BrandID"
-                                onclick="return EditItem('@item.BrandID')">
+                                id="edit-@item.CategoryID"
+                                onclick="return EditItem('@item.CategoryID')">
                             <i class="mdi mdi-border-color"></i>
                         </button>
                         <button class="btn btn-sm btn-danger"
                                 type="submit" value="Delete"
-                                id="delete-@item.BrandID"
-                                onclick="return DeleteItem('@item.BrandID')">
+                                id="delete-@item.CategoryID"
+                                onclick="return DeleteItem('@item.CategoryID')">
                             <i class="mdi mdi-delete"></i>
                         </button>
                         <button class="btn btn-sm btn-success"
                                 type="submit" value="Save"
-                                id="save-@item.BrandID"
-                                onclick="return SaveEdit('@item.BrandID')">
+                                id="save-@item.CategoryID"
+                                onclick="return SaveEdit('@item.CategoryID')">
                             <i class="mdi mdi-check"></i>
                         </button>
                     </td>
@@ -82,8 +82,8 @@
         @foreach (var item in Model)
         {
             <text>
-                $("#save-@item.BrandID").hide();
-                $("#cate-@item.BrandID-input").hide();
+                $("#save-@item.CategoryID").hide();
+                $("#cate-@item.CategoryID-input").hide();
             </text>
         }
         $(function () {

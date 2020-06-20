@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Models.EF.BRAND>
+﻿@model IEnumerable<DataAccess.EF.Category>
 
 <h5>Select Brand</h5>
 <hr />
@@ -10,13 +10,13 @@
             <div class="card bg-white m-b-30">
                 <h4 class="card-header">
                     <i class="mdi mdi-package"></i>
-                    <a href="javascript:void(0);" id="save-@item.BrandID" onclick="return CreateProduct('@item.BrandID')">
-                        @item.BrandName
+                    <a href="javascript:void(0);" id="save-@item.CategoryID" onclick="return CreateProduct('@item.CategoryID')">
+                        @item.CategoryName
                     </a>
                     
                 </h4>
                 <div class="card-body">
-                    <p class="card-text"><strong>Url:</strong> @item.BrandURL</p>
+                    <p class="card-text"><strong>Url:</strong> @item.CategoryURL</p>
                     <p class="card-text"><strong>Date:</strong> @item.CreatedDate</p>
                 </div>
             </div>

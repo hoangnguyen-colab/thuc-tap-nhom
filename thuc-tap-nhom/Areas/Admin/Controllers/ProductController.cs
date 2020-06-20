@@ -30,7 +30,7 @@ namespace thuc_tap_nhom.Areas.Admin.Controllers
 
         public async Task<ActionResult> ProductDetail(int id)
         {
-            ViewBag.Brand = await new BrandDAO().LoadData();
+            ViewBag.Brand = await new CategoryDAO().LoadData();
 
             var item = await new ProductDAO().LoadByID(id);
             return View(item);
@@ -47,9 +47,9 @@ namespace thuc_tap_nhom.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateProductPartial(int brandid)
+        public async Task<ActionResult> CreateProductPartial(int categoryid)
         {
-            return PartialView("CreateProductPartial", await new BrandDAO().LoadByID(brandid));
+            return PartialView("CreateProductPartial", await new CategoryDAO().LoadByID(categoryid));
         }
 
         [HttpPost]
@@ -62,12 +62,11 @@ namespace thuc_tap_nhom.Areas.Admin.Controllers
                     ProductName = model.ProductName,
                     ProductPrice = model.ProductPrice,
                     ProductDescription = model.ProductDescription,
-                    PromotionPrice = model.PromotionPrice,
                     ProductStock = model.ProductStock,
                     ProductURL = SlugGenerator.SlugGenerator.GenerateSlug(model.ProductName),
                     ProductImage = model.ProductImage,
                     ProductStatus = model.ProductStatus,
-                    BrandID = model.BrandID,
+                    CategoryID = model.CategoryID,
                     CreatedDate = DateTime.Now
                 };
                 int result = await new ProductDAO().CreateProduct(prod);

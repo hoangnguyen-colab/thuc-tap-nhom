@@ -1,4 +1,4 @@
-﻿@model Models.EF.PRODUCT
+﻿@model DataAccess.EF.Product
 
 @{
     ViewBag.Title = @Html.DisplayFor(model => model.ProductName);
@@ -23,10 +23,10 @@
 
     <div class="row">
         <div class="input-field col-lg-2 s12">
-            <label>Brand</label>
+            <label>Category</label>
         </div>
         <div class="input-field col s12">
-            <input readonly value="@Html.DisplayFor(model => model.BRAND.BrandName)">
+            <input readonly value="@Html.DisplayFor(model => model.Category.CategoryName)">
         </div>
     </div>
 
@@ -54,14 +54,6 @@
         </div>
         <div class="input-field col s12">
             <input id="product-price" name="product-price" type="number" class="validate" value="@Html.DisplayFor(model => model.ProductPrice)">
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col-lg-2 s12">
-            <label>Promotion Price</label>
-        </div>
-        <div class="input-field col s12">
-            <input id="product-promotion" name="product-promotion" type="number" class="validate" value="@Html.DisplayFor(model => model.PromotionPrice)">
         </div>
     </div>
     <div class="row">
@@ -154,9 +146,8 @@
                     let data = {
                         "ProductName": $("#product-name").val(),
                         "ProductPrice": $("#product-price").val(),
-                        "PromotionPrice": $("#product-promotion").val(),
                         "ProductStock": $("#product-stock").val(),
-                        "BrandID": $("#select-cate").val(),
+                        "CategoryID": $("#select-cate").val(),
                         "ProductImage": $("#product-image").val(),
                         "ShowImage_2": $("#show-image-2").val(),
                         "ProductDescription": $("#text-area").val(),

@@ -1,7 +1,7 @@
-﻿@model Models.EF.BRAND
+﻿@model DataAccess.EF.Category
 
 <button class="btn btn-sm btn-primary" value="Back"
-        onclick="return BackToBrand()">
+        onclick="return BackToCategory()">
     <i class="mdi mdi-arrow-left-bold"></i>
     Back to Brand
 </button>
@@ -13,7 +13,7 @@
             <label>Brand</label>
         </div>
         <div class="input-field col s12">
-            <input type="text" readonly value="@Model.BrandName">
+            <input type="text" readonly value="@Model.CategoryName">
         </div>
     </div>
 
@@ -41,15 +41,6 @@
         </div>
         <div class="input-field col s12">
             <input id="product-price" name="product-price" type="number" class="validate">
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="input-field col-lg-2 s12">
-            <label>Promotion Price</label>
-        </div>
-        <div class="input-field col s12">
-            <input id="product-promotion" name="product-promotion" type="number" class="validate">
         </div>
     </div>
 
@@ -90,14 +81,6 @@
         </div>
     </div>
 
-    <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="create-configuation">
-        <label class="form-check-label" for="create-configuation">Create Config</label>
-    </div>
-    <hr />
-
-    <div id="config-partial"></div>
-
     <button class="btn waves-effect waves-light" type="submit" name="action">
         <span>Submit </span><i class="mdi mdi-send"></i>
     </button>
@@ -109,18 +92,6 @@
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script>
     $(document).ready(function () {
-
-        $('#create-configuation').click(function () {
-            if ($(this).is(':checked')) {
-                $.post("@Url.Action("CreateConfigurationPartial", "Configuration")", function (data) {
-                    $("#config-partial").empty();
-                    $("#config-partial").append(data);
-                });
-            } else if (!$(this).is(':checked')) {
-                    $("#config-partial").empty();
-            }
-        });
-
         $('select').material_select();
 
         $("#status-checkbox").click(function () {
@@ -165,10 +136,8 @@
                 let data = {
                     "ProductName": $("#product-name").val(),
                     "ProductPrice": $("#product-price").val(),
-                    "PromotionPrice": $("#product-promotion").val(),
                     "ProductStock": $("#product-stock").val(),
-                    "BrandID": "@Model.BrandID",
-                    "Size": $("#select-size-multi").val(),
+                    "CategoryID": "@Model.CategoryID",
                     "ProductImage": $("#product-image").val(),
                     "ProductDescription": $("#text-area").val(),
                     "ProductStatus": $("#status-checkbox").is(":checked")
@@ -181,39 +150,10 @@
                     dataType: "json",
                     contentType: "application/json",
                     success: function (response) {
-                        if (response.Success && $('#create-configuation').is(':checked')) {
-                            let config = {
-                                "OSName": $("#OSName").val(),
-                                "OSVersion": $("#OSversion").val(),
-                                "SizeDisplay": $("#Display").val(),
-                                "FrontCamera": $("#FrontCamera").val(),
-                                "RearCamera": $("#RearCamera").val(),
-                                "Cpu": $("#CPU").val(),
-                                "Ram": $("#Ram").val(),
-                                "Rom": $("#Rom").val(),
-                                "SimStatus": $("#Sim").val(),
-                                "Battery": $("#Battery").val(),
-                                "ProductID": `${response.id}`
-                            };
-                            $.ajax({
-                                url: "@Url.Action("CreateConfiguration", "Configuration")",
-                                type: "POST",
-                                data: JSON.stringify(config),
-                                dataType: "json",
-                                contentType: "application/json",
-                                success: function (response) {
-                                    if (response.Success) {
-                                        swal("Created product!", "", "success");
-                                    } else if (!response.Success) {
-                                        swal("Error creating config!", "", "error");
-                                    }
-                                },
-                                error: function (error) {
-                                    swal("Error creating config !", "", "error");
-                                }
-                            });
-                        } else if (response.Success) {
+                        if (response.Success) {
                             swal("Created product!", "", "success");
+                        } else {
+                            swal("Error creating product !", "", "error");
                         }
                     },
                     error: function (error) {

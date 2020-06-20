@@ -10,33 +10,33 @@ using System.Web.Mvc;
 namespace thuc_tap_nhom.Areas.Admin.Controllers
 {
     [RouteArea("Admin")]
-    public class BrandController : BaseController
+    public class CategoryController : BaseController
     {
-        public ActionResult CreateBrand()
+        public ActionResult CreateCategory()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateBrand(BRAND model)
+        public async Task<ActionResult> CreateCategory(Category model)
         {
             if (ModelState.IsValid)
             {
-                model.BrandURL = SlugGenerator.SlugGenerator.GenerateSlug(model.BrandName);
+                model.CategoryURL = SlugGenerator.SlugGenerator.GenerateSlug(model.CategoryName);
                 model.CreatedDate = DateTime.Now;
-                int result = await new BrandDAO().CreateBrand(model);
-                return RedirectToAction("CreateBrand");
+                int result = await new CategoryDAO().CreateCategory(model);
+                return RedirectToAction("CreateCategory");
             }
             return View();
         }
 
         [HttpPost]
-        public async Task<JsonResult> EditBrand(BRAND model, int id)
+        public async Task<JsonResult> EditCategory(Category model, int id)
         {
             if (ModelState.IsValid)
             {
-                model.BrandURL = SlugGenerator.SlugGenerator.GenerateSlug(model.BrandName);
-                int result = await new BrandDAO().EditBrand(model, id);
+                model.CategoryURL = SlugGenerator.SlugGenerator.GenerateSlug(model.CategoryName);
+                int result = await new CategoryDAO().EditCategory(model, id);
                 if (result == 0)
                 {
                     return Json(new { Success = false, id }, JsonRequestBehavior.AllowGet);
@@ -47,25 +47,25 @@ namespace thuc_tap_nhom.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> BrandList()
+        public async Task<ActionResult> CategoryList()
         {
-            return PartialView("BrandList", await new BrandDAO().LoadData());
+            return PartialView("CategoryList", await new CategoryDAO().LoadData());
         }
 
         [HttpPost]
-        public async Task<ActionResult> BrandListPartial()
+        public async Task<ActionResult> CategoryListPartial()
         {
-            return PartialView("BrandListPartial", await new BrandDAO().LoadData());
+            return PartialView("CategoryListPartial", await new CategoryDAO().LoadData());
         }
 
         [HttpPost]
-        public async Task<JsonResult> DeleteBrand(int id)
+        public async Task<JsonResult> DeleteCategory(int id)
         {
-            if (await new BrandDAO().LoadByID(id) == null)
+            if (await new CategoryDAO().LoadByID(id) == null)
             {
                 return Json(new { Success = 0 }, JsonRequestBehavior.AllowGet);
             }
-            if (!(await new BrandDAO().DeleteBrand(id)))
+            if (!(await new CategoryDAO().DeleteCategory(id)))
             {
                 return Json(new { Success = 0 }, JsonRequestBehavior.AllowGet);
             }

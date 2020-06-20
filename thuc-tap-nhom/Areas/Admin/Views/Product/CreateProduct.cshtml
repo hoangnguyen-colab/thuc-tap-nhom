@@ -1,4 +1,4 @@
-﻿@using Models.EF
+﻿@using DataAccess.EF
 
 @{
     ViewBag.Title = "Create Product";
@@ -24,7 +24,7 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js'></script>
     <script>
         $(document).ready(function () {
-            $.post("@Url.Action("BrandListPartial", "Brand")", function (data) {
+            $.post("@Url.Action("CategoryListPartial", "Category")", function (data) {
                 $("#data-partial").empty();
                 $("#data-partial").append(data);
                 $("#loader").hide();
@@ -33,7 +33,7 @@
 
         function CreateProduct(id) {
             $.post("@Url.Action("CreateProductPartial", "Product")", {
-                "brandid": id
+                "categoryid": id
             }, function (data) {
                 $("#loader").show();
                 $("#data-partial").empty();
@@ -42,16 +42,14 @@
             });
         }
 
-        function BackToBrand() {
-            $.post("@Url.Action("BrandListPartial", "Brand")", function (data) {
+        function BackToCategory() {
+            $.post("@Url.Action("CategoryListPartial", "Category")", function (data) {
                 $("#loader").show();
                 $("#data-partial").empty();
                 $("#data-partial").append(data);
                 $("#loader").hide();
             });
         }   
-
-     
     </script>
 }
 

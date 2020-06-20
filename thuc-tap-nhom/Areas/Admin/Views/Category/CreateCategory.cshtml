@@ -1,19 +1,18 @@
-﻿@model Models.EF.BRAND
-@using Models.DAO;
+﻿@model DataAccess.EF.Category
 
 @{
-    ViewBag.Title = "Create Brand";
+    ViewBag.Title = "Create Category";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <link href="~/Assets/loading-spinner.css" rel="stylesheet" />
 @*<link href="~/Areas/Admin/assets/plugins/sweet-alert/sweetalert2.min.css" rel="stylesheet" type="text/css" />*@
 
-<h2>Create Brand</h2>
+<h2>Create Category</h2>
 
 <div class="row">
     <div class="col-lg-3">
-        @using (Html.BeginForm("CreateBrand", "Brand", FormMethod.Post, new { id = "cate-submit-form" }))
+        @using (Html.BeginForm("CreateCategory", "Category", FormMethod.Post, new { id = "cate-submit-form" }))
         {
             @Html.AntiForgeryToken()
 
@@ -21,16 +20,16 @@
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    <label class="control-label col-md-6">Brand Name</label>
+                    <label class="control-label col-md-6">Category Name</label>
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.BrandName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.BrandName, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-6">Brand URL</label>
+                    <label class="control-label col-md-6">Category URL</label>
                     <div class="col-md-10">
-                        <h5 id="brand-url">(name)</h5>
+                        <h5 id="category-url">(name)</h5>
                     </div>
                 </div>
 
@@ -42,7 +41,7 @@
             </div>
         }
     </div>
-    <div class="col-sm" id="brand-partial">
+    <div class="col-sm" id="category-partial">
         <div class="loader" id="loader">
             <svg class="circular">
                 <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"></circle>
@@ -58,23 +57,23 @@
         $(document).ready(function () {
             $("#cate-submit-form").validate({
                 rules: {
-                    'BrandName': "required"
+                    'CategoryName': "required"
                 },
                 messages: {
-                    'BrandName': "Please enter brand name!"
+                    'CategoryName': "Please enter category name!"
                 }
             });
 
-            $.post("@Url.Action("BrandList", "Brand")",
+            $.post("@Url.Action("CategoryList", "Category")",
                 function (data) {
-                    $("#brand-partial").append(data);
+                    $("#category-partial").append(data);
                     $("#loader").hide();
                 }
             );
         });
 
-        $("input[name=BrandName]").on('input', function (e) {
-            $("#brand-url").text(slugify($("input[name=BrandName]").val()));
+        $("input[name=CategoryName]").on('input', function (e) {
+            $("#category-url").text(slugify($("input[name=CategoryName]").val()));
         });
 
         function slugify(text) {
@@ -97,7 +96,7 @@
                     if (willDelete) {
                         $.ajax({
                             type: "post",
-                            url: `@Url.Action("DeleteBrand", "Brand")`,
+                            url: `@Url.Action("DeleteCategory", "Category")`,
                             data: "id=" + id,
                             success: function (response) {
                                 if (response.Success == 1) {
@@ -126,10 +125,10 @@
                     if (willDelete) {
                         $.ajax({
                             type: "post",
-                            url: `@Url.Action("EditBrand", "Brand")`,
+                            url: `@Url.Action("EditCategory", "Category")`,
                             data: {
                                 "id": id,
-                                "BrandName": $(`#cate-${id}`).val()
+                                "CategoryName": $(`#cate-${id}`).val()
                             },
                             success: function (response) {
                                 if (response.Success == 1) {

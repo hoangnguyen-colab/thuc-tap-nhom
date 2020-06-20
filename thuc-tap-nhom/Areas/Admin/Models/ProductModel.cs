@@ -27,9 +27,9 @@ namespace cong_nghe_web.Areas.Admin.Models
         [Display(Name = "Stock")]
         public int? ProductStock { get; set; }
 
-        [Display(Name = "Brand")]
-        [Required(ErrorMessage = "Select Brand")]
-        public int BrandID { get; set; }
+        [Display(Name = "Category")]
+        [Required(ErrorMessage = "Select Category")]
+        public int CategoryID { get; set; }
 
         [Display(Name = "Product Image")]
         [StringLength(250)]

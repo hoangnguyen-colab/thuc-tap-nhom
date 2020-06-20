@@ -1,5 +1,4 @@
 ﻿using DataAccess.DAO;
-using DataAccess.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,15 +18,15 @@ namespace thuc_tap_nhom.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> ValidateAdmin(ADMIN model)
+        public async Task<JsonResult> ValidateAdmin(DataAccess.EF.Admin model)
         {
             if (ModelState.IsValid)
             {
-                var result = await new AdminDAO().LoginAsync(model.UserUsername, model.UserPassword);
+                var result = await new AdminDAO().LoginAsync(model.AdminUsername, model.AdminUsername);
                 if (result == true)
                 {
                     Session["AdminLogin"] = model;
-                    return Json(new { Success = true, Username = model.UserUsername }, JsonRequestBehavior.AllowGet);
+                    return Json(new { Success = true, Username = model.AdminUsername }, JsonRequestBehavior.AllowGet);
                 }
                 else
                     return Json(new { Success = false }, JsonRequestBehavior.AllowGet);
