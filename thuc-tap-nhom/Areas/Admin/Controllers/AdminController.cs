@@ -22,7 +22,7 @@ namespace thuc_tap_nhom.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await new AdminDAO().LoginAsync(model.AdminUsername, model.AdminUsername);
+                var result = await new AdminDAO().LoginAsync(model.AdminUsername, model.AdminPassword);
                 if (result == true)
                 {
                     Session["AdminLogin"] = model;
